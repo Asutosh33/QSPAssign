@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
@@ -21,7 +22,7 @@ public class Sc10 {
 	}
 
 	@Test
-	public static void M10()throws InterruptedException, AWTException
+	public static void M10() throws InterruptedException, AWTException
 
 	{
 
@@ -29,18 +30,15 @@ public class Sc10 {
 		driver.manage().window().maximize();// maximize the browser window
 		Actions a = new Actions(driver);
 		driver.navigate().to("https://www.bluestone.com/");
-		Thread.sleep(2000);
-		WebDriverWait ww = new WebDriverWait(driver, 30);
-		WebElement ele = driver.findElement(By.xpath("//div[@class='lc-8w4vj8 eqd5v0k2']/p"));
-		a.click(ele);
-		driver.switchTo().frame(ele);
 
-		if (ww.until(ExpectedConditions
-				.presenceOfElementLocated(By.xpath("//div[@class='lc-8w4vj8 eqd5v0k2']/p"))) != null) {
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);// Implicit Wait
 
-		}
+		WebElement ele1 = driver.findElement(By.xpath("//iframe[@id='chat-widget']"));
+		a.click(ele1);
+		
 
-		Thread.sleep(5000);
+		WebElement ele = driver.findElement(By.xpath("//div[@class=\"lc-1h9260c eptvlbh0\"]/input[@name='name']"));
+		ele.sendKeys("Java");
 
 	}
 }
