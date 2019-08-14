@@ -16,7 +16,7 @@ public class Sc6 {
 	}
 
 	@Test
-	public static void M5() throws InterruptedException {
+	public static void M6() throws InterruptedException {
 
 		WebDriver driver = new ChromeDriver();
 		driver.manage().window().maximize(); // to maximize the tab
